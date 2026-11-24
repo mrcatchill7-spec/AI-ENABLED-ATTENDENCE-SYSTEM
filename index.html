@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f8fc">
+  <title>Attendly — Attendance prototype</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="Attendly home"><span class="brand-mark" aria-hidden="true">A</span> Attendly</a>
+    <span class="prototype-label">PRIVACY-FIRST PROTOTYPE</span>
+  </header>
+
+  <main class="layout">
+    <section class="intro">
+      <div>
+        <p class="eyebrow">CLASSROOM TOOLS</p>
+        <h1>Attendance, made simpler.</h1>
+        <p class="lead">A small, local-first attendance demo. Mark students present, review the class summary, and export a CSV when you need it.</p>
+      </div>
+      <div class="date-control">
+        <label for="attendance-date">Attendance date</label>
+        <input id="attendance-date" type="date">
+      </div>
+    </section>
+
+    <section class="notice" aria-label="Privacy notice">
+      <span class="notice-icon" aria-hidden="true">i</span>
+      <p><strong>Responsible AI note:</strong> This prototype does not identify faces or store camera footage or biometric data. The optional camera preview stays in your browser and is only a technology demonstration. Get school approval and informed consent before any real-world data collection.</p>
+    </section>
+
+    <section class="stats" aria-label="Attendance summary">
+      <article class="stat-card"><span class="stat-label">ENROLLED STUDENTS</span><strong id="total-count">0</strong><span class="stat-caption">In this demo class</span></article>
+      <article class="stat-card"><span class="stat-label">PRESENT TODAY</span><strong id="present-count">0</strong><span class="stat-caption">Marked for selected date</span></article>
+      <article class="stat-card"><span class="stat-label">ATTENDANCE RATE</span><strong id="attendance-rate">0%</strong><span class="stat-caption">Present / enrolled</span></article>
+    </section>
+
+    <div class="content-grid">
+      <section class="panel roster-panel">
+        <div class="panel-heading">
+          <div><p class="eyebrow">CLASS REGISTER</p><h2>Students</h2></div>
+          <button id="export-button" class="button button-secondary" type="button">Export CSV</button>
+        </div>
+        <form id="add-student-form" class="add-student-form">
+          <label class="visually-hidden" for="student-name">Student name</label>
+          <input id="student-name" name="student-name" type="text" maxlength="60" placeholder="Add a student name" autocomplete="off" required>
+          <button class="button button-primary" type="submit">Add student</button>
+        </form>
+        <p id="status-message" class="status-message" role="status" aria-live="polite"></p>
+        <div id="roster" class="roster" aria-live="polite"></div>
+        <p class="storage-note">Demo roster and attendance are saved only in this browser using local storage. Do not enter real student information on a shared device.</p>
+      </section>
+
+      <aside class="panel camera-panel">
+        <div class="panel-heading"><div><p class="eyebrow">OPTIONAL DEMO</p><h2>Camera preview</h2></div><span class="camera-dot" aria-hidden="true"></span></div>
+        <div class="video-wrap">
+          <video id="camera-video" autoplay muted playsinline aria-label="Live camera preview"></video>
+          <div id="camera-placeholder" class="camera-placeholder"><span aria-hidden="true">◎</span><p>Your camera preview will appear here.</p><small>No video is recorded or uploaded.</small></div>
+        </div>
+        <p id="camera-message" class="camera-message" role="status" aria-live="polite">Camera is off.</p>
+        <div class="camera-actions">
+          <button id="camera-start" class="button button-primary" type="button">Start preview</button>
+          <button id="camera-stop" class="button button-secondary" type="button" disabled>Stop</button>
+        </div>
+        <p class="camera-footnote">Camera access requires HTTPS or localhost and your permission. This preview does not recognize people or mark attendance.</p>
+      </aside>
+    </div>
+    <footer>Built as an educational prototype · Accuracy, fairness, consent, and data minimization matter.</footer>
+  </main>
+  <script src="app.js" defer></script>
+</body>
+</html>
